@@ -245,108 +245,38 @@ h1 span { color:var(--mint); }
 @media(max-width:750px){.incident-hero{padding:62px 0}.incident-grid,.incident-figures,.incident-steps,.incident-home-layout{grid-template-columns:1fr}.incident-hero-lead{font-size:14px}}
 
 
-/* Animated SecureBox header brand: open -> SecBox.sec -> glow -> locked icon */
-.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-.brand-header{position:relative;gap:10px;min-height:38px}
-.brand-animated{position:relative;flex:0 0 34px;overflow:visible;isolation:isolate;animation:brandMarkBackground 7.2s ease 1 both;animation-fill-mode:forwards}
+/* Animated SecureBox header brand: one state exits before the next enters. */
+.brand-header{position:relative;gap:10px;min-height:38px;--brand-duration:6.8s}
+.brand-animated{position:relative;flex:0 0 34px;overflow:visible;isolation:isolate;background:var(--mint);border-radius:10px;animation:brandMarkBackgroundClean var(--brand-duration) linear 1 both}
 .brand-logo-svg{position:relative;z-index:2;width:22px;height:22px}
-.brand-shield,.brand-open-shackle,.brand-closed-shackle,.brand-lock-body,.brand-square-lock-glyph,.brand-final-lock-glyph{transform-box:fill-box;transform-origin:center}
-.brand-open-shackle{opacity:1}
-.brand-closed-shackle{opacity:0;transform:translateY(-2px)}
-.brand-square-lock-glyph{opacity:0;transform:scale(.62);color:var(--navy);animation:brandSquareBlackLock 7.2s cubic-bezier(.18,.78,.22,1) 1 both;animation-fill-mode:forwards}\n.brand-final-lock-glyph{opacity:0;transform:scale(.55);color:var(--mint)}
-.brand-glow{position:absolute;z-index:0;left:50%;top:50%;width:8px;height:8px;border-radius:999px;transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none;background:rgba(112,255,199,.85);box-shadow:0 0 10px 6px rgba(112,255,199,.42),0 0 28px 14px rgba(112,255,199,.20)}
-.brand-text-stage{position:relative;display:inline-block;width:126px;height:28px;overflow:visible;transform-origin:left center;animation:brandLockOnly 7.2s cubic-bezier(.2,.75,.2,1) 1 both;animation-fill-mode:forwards}
+.brand-shield,.brand-open-shackle,.brand-lock-body,.brand-final-lock-glyph{transform-box:fill-box;transform-origin:center}
+.brand-shield{opacity:1;animation:brandShieldClean var(--brand-duration) linear 1 both}
+.brand-lock-body{opacity:1;animation:brandLockBodyClean var(--brand-duration) linear 1 both}
+.brand-open-shackle{opacity:1;animation:brandOpenShackleClean var(--brand-duration) linear 1 both}
+.brand-closed-shackle{display:none!important}
+.brand-square-lock-glyph{display:none!important}
+.brand-final-lock-glyph{opacity:0;transform:scale(.82);color:var(--mint);animation:brandFinalLockClean var(--brand-duration) cubic-bezier(.2,.75,.2,1) 1 both}
+.brand-glow{position:absolute;z-index:0;left:50%;top:50%;width:8px;height:8px;border-radius:999px;opacity:0;pointer-events:none;background:rgba(112,255,199,.8);box-shadow:0 0 12px 7px rgba(112,255,199,.34),0 0 30px 15px rgba(112,255,199,.14);animation:brandGlowClean var(--brand-duration) linear 1 both}
+.brand-text-stage{position:relative;display:inline-block;width:126px;height:28px;overflow:visible;animation:brandTextStageClean var(--brand-duration) linear 1 both}
 .brand-text{position:absolute;left:0;top:50%;transform:translateY(-50%);font:inherit;letter-spacing:inherit;white-space:nowrap}
-.brand-full-name{opacity:1;animation:brandFullName 7.2s ease 1 both;animation-fill-mode:forwards}
-.brand-sec-name{opacity:0;transform:translateY(-50%) translateX(5px);animation:brandSecName 7.2s ease 1 both;animation-fill-mode:forwards}
-.brand-ext{color:var(--mintdeep);text-shadow:0 0 0 rgba(112,255,199,0)}
-.brand-shield{animation:brandShield 7.2s ease 1 both;animation-fill-mode:forwards}
-.brand-lock-body{animation:brandLockBody 7.2s ease 1 both;animation-fill-mode:forwards}
-.brand-open-shackle{animation:brandOpenShackle 7.2s ease 1 both;animation-fill-mode:forwards}
-.brand-closed-shackle{animation:brandClosedShackle 7.2s ease 1 both;animation-fill-mode:forwards}
-.brand-final-lock-glyph{animation:brandFinalLockGlyph 7.2s cubic-bezier(.18,.78,.22,1) 1 both;animation-fill-mode:forwards}
-.brand-glow{animation:brandGlow 7.2s ease-out 1 both;animation-fill-mode:forwards}
-.brand-final-lock{animation:brandFinalLockPulse 7.2s ease 1 both;animation-fill-mode:forwards}
-.brand-final-lock::before,.brand-final-lock::after{content:"";position:absolute;z-index:6;left:50%;opacity:0;pointer-events:none;box-sizing:border-box;animation:brandPersistentLock 7.2s cubic-bezier(.18,.78,.22,1) 1 both;animation-fill-mode:forwards}
-.brand-final-lock::before{top:53%;width:17px;height:13px;border:2.6px solid var(--mint);border-radius:3.5px;transform:translate(-50%,-50%) scale(.68);background:transparent;box-shadow:0 0 10px rgba(112,255,199,.18)}
-.brand-final-lock::after{top:25%;width:11px;height:10px;border:2.6px solid var(--mint);border-bottom:0;border-radius:8px 8px 0 0;transform:translateX(-50%) scale(.68);background:transparent}
+.brand-full-name{opacity:1;animation:brandFullNameClean var(--brand-duration) linear 1 both}
+.brand-sec-name{opacity:0;animation:brandSecNameClean var(--brand-duration) linear 1 both}
+.brand-ext{color:var(--mintdeep)}
+@keyframes brandFullNameClean{0%,22%{opacity:1;transform:translateY(-50%)}26%,100%{opacity:0;transform:translateY(-50%) translateX(-7px)}}
+@keyframes brandSecNameClean{0%,31%{opacity:0;transform:translateY(-50%) translateX(8px)}36%,58%{opacity:1;transform:translateY(-50%) translateX(0)}62%,100%{opacity:0;transform:translateY(-50%) translateX(-6px)}}
+@keyframes brandGlowClean{0%,66%{opacity:0;transform:translate(-50%,-50%) scale(.25)}70%{opacity:.72;transform:translate(-50%,-50%) scale(7)}76%,100%{opacity:0;transform:translate(-50%,-50%) scale(11)}}
+@keyframes brandOpenShackleClean{0%,62%{opacity:1;transform:translateY(0)}66%,100%{opacity:0;transform:translateY(1px) rotate(-5deg)}}
+@keyframes brandLockBodyClean{0%,66%{opacity:1;transform:scale(1)}70%,100%{opacity:0;transform:scale(.9)}}
+@keyframes brandShieldClean{0%,70%{opacity:1;transform:scale(1)}76%,100%{opacity:0;transform:scale(.88)}}
+@keyframes brandMarkBackgroundClean{0%,70%{background:var(--mint);border-radius:10px}76%{background:rgba(184,255,221,.08)}80%,100%{background:transparent;border-radius:0}}
+@keyframes brandTextStageClean{0%,62%{width:126px;opacity:1}68%{width:126px;opacity:0}76%,100%{width:0;opacity:0}}
+@keyframes brandFinalLockClean{0%,82%{opacity:0;transform:scale(.82)}88%{opacity:1;transform:scale(1.06)}92%,100%{opacity:1;transform:scale(1)}}
+.brand-header.is-brand-final .brand-mark{background:transparent!important;border-radius:0!important;box-shadow:none!important;overflow:visible}
+.brand-header.is-brand-final .brand-logo-svg{width:30px;height:30px}
+.brand-header.is-brand-final .brand-shield,.brand-header.is-brand-final .brand-open-shackle,.brand-header.is-brand-final .brand-closed-shackle,.brand-header.is-brand-final .brand-lock-body{display:none!important}
+.brand-header.is-brand-final .brand-square-lock-glyph{display:none!important}
+.brand-header.is-brand-final .brand-text-stage{display:none!important}
+.brand-header.is-brand-final .brand-glow{display:none!important}
+.brand-header.is-brand-final .brand-final-lock-glyph{opacity:1!important;transform:scale(1)!important;color:var(--mint)!important}
+@media(prefers-reduced-motion:reduce){.brand-header .brand-mark{background:transparent;border-radius:0;animation:none!important}.brand-header .brand-text-stage{display:none!important;animation:none!important}.brand-header .brand-shield,.brand-header .brand-lock-body,.brand-header .brand-open-shackle,.brand-header .brand-closed-shackle,.brand-header .brand-square-lock-glyph{display:none!important;animation:none!important}.brand-header .brand-final-lock-glyph{opacity:1;transform:scale(1);animation:none!important}.brand-header .brand-glow{display:none!important;animation:none!important}}
 
-
-@keyframes brandMarkBackground{
-  0%,72%{background:var(--mint);border-radius:10px}
-  82%{background:rgba(184,255,221,.14);border-radius:12px}
-  90%,100%{background:transparent;border-radius:0}
-}
-@keyframes brandFullName{
-  0%,18%{opacity:1;transform:translateY(-50%) translateX(0);filter:blur(0)}
-  28%,100%{opacity:0;transform:translateY(-50%) translateX(-10px);filter:blur(2px)}
-}
-@keyframes brandSecName{
-  0%,21%{opacity:0;transform:translateY(-50%) translateX(12px);filter:blur(3px)}
-  34%,58%{opacity:1;transform:translateY(-50%) translateX(0);filter:blur(0)}
-  66%{opacity:1;transform:translateY(-50%) translateX(0);filter:blur(0);text-shadow:0 0 14px rgba(112,255,199,.65)}
-  78%,100%{opacity:0;transform:translateY(-50%) translateX(-8px) scale(.96);filter:blur(2px)}
-}
-@keyframes brandOpenShackle{
-  0%,56%{opacity:1;transform:translateY(0) rotate(0)}
-  65%{opacity:0;transform:translateY(1px) rotate(-5deg)}
-  100%{opacity:0}
-}
-@keyframes brandClosedShackle{
-  0%,55%{opacity:0;transform:translateY(-3px)}
-  64%{opacity:1;transform:translateY(0)}
-  74%,100%{opacity:0;transform:translateY(1px) scale(.9)}
-}
-@keyframes brandLockBody{
-  0%,66%{opacity:1;transform:scale(1)}
-  75%,100%{opacity:0;transform:scale(.88)}
-}
-@keyframes brandShield{
-  0%,68%{opacity:1;transform:scale(1)}
-  82%,100%{opacity:0;transform:scale(.82)}
-}
-@keyframes brandSquareBlackLock{
-  0%,64%{opacity:0;transform:scale(.62)}
-  70%{opacity:.55;transform:scale(.82)}
-  72%,78%{opacity:1;transform:scale(1)}
-  82%,100%{opacity:0;transform:scale(.9)}
-}
-@keyframes brandFinalLockGlyph{
-  0%,78%{opacity:0;transform:scale(.72)}
-  84%{opacity:.55;transform:scale(.88)}
-  90%,100%{opacity:1;transform:scale(1)}
-}
-@keyframes brandGlow{
-  0%,38%{opacity:0;transform:translate(-50%,-50%) scale(.2)}
-  53%{opacity:.85;transform:translate(-50%,-50%) scale(8)}
-  64%{opacity:.5;transform:translate(-50%,-50%) scale(12)}
-  78%,100%{opacity:0;transform:translate(-50%,-50%) scale(14)}
-}
-@keyframes brandLockOnly{
-  0%,67%{width:126px;opacity:1;transform:scaleX(1)}
-  80%{width:54px;opacity:.35;transform:scaleX(.7)}
-  90%,100%{width:0;opacity:0;transform:scaleX(0)}
-}
-@keyframes brandPersistentLock{
-  0%,72%{opacity:0}
-  80%{opacity:.78}
-  88%,100%{opacity:1}
-}
-@keyframes brandFinalLockPulse{
-  0%,58%{box-shadow:none;transform:scale(1)}
-  67%{box-shadow:0 0 0 1px rgba(112,255,199,.18),0 0 22px 7px rgba(112,255,199,.30);transform:scale(1)}
-  82%,100%{box-shadow:0 0 0 1px rgba(112,255,199,.12),0 0 10px 2px rgba(112,255,199,.14);transform:scale(1)}
-}
-
-@media(prefers-reduced-motion:reduce){
-  .brand-header .brand-mark{background:transparent;border-radius:0;animation:none!important}
-  .brand-header .brand-text-stage{width:0;opacity:0;transform:scaleX(0);animation:none!important}
-  .brand-header .brand-shield{opacity:0;animation:none!important}
-  .brand-header .brand-lock-body{opacity:0;animation:none!important}
-  .brand-header .brand-open-shackle{opacity:0;animation:none!important}
-  .brand-header .brand-closed-shackle{opacity:0;animation:none!important}
-  .brand-header .brand-square-lock-glyph{opacity:0;animation:none!important}\n  .brand-header .brand-final-lock-glyph{opacity:1;transform:scale(1);animation:none!important}
-  .brand-header .brand-glow{display:none;animation:none!important}
-  .brand-header .brand-final-lock{animation:none!important}
-  .brand-header .brand-final-lock::before,.brand-header .brand-final-lock::after{opacity:1;animation:none!important}
-}
