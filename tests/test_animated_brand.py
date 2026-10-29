@@ -36,9 +36,16 @@ class AnimatedBrandContract(unittest.TestCase):
             self.assertIn(term,css)
         self.assertIn("animation-fill-mode:forwards",css.replace(" ",""))
 
-    def test_final_state_is_lock_only(self):
-        css=read("styles.css")
-        self.assertIn("opacity:0",css.replace(" ",""))
+    def test_final_state_is_lock_only_and_fills_square(self):
+        css=read("styles.css").replace(" ","")
+        self.assertIn("@keyframesbrandFinalLockPulse",css)
+        self.assertIn("@keyframesbrandClosedShackle",css)
+        self.assertIn("@keyframesbrandLockBody",css)
+        self.assertIn("@keyframesbrandFinalLockGlyph",css)
+        self.assertIn(".brand-final-lock-glyph",css)
+        self.assertIn("transform:scale(.55)",css)
+        self.assertIn("82%,100%{opacity:1;transform:scale(1)",css)
+        self.assertIn("82%,100%{opacity:0",css)
         self.assertIn("brand-final-lock",css)
 
     def test_footer_stays_static(self):
