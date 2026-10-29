@@ -109,7 +109,6 @@ h1 span { color:var(--mint); }
 .brand-header.is-brand-final .brand-full-name,.brand-header.is-brand-final .brand-sec-name{opacity:0!important}
 .brand-header.is-brand-final .brand-glow{opacity:0!important;display:none!important}
 .brand-header.is-brand-final .brand-final-lock-glyph{opacity:1!important;transform:scale(1)!important;color:var(--mint)!important}
-.brand-header.is-brand-final .brand-final-lock::before,.brand-header.is-brand-final .brand-final-lock::after{display:none!important}
 
 @media(prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important} }
 
