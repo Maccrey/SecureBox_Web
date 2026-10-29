@@ -262,15 +262,15 @@ h1 span { color:var(--mint); }
 .brand-full-name{opacity:1;animation:brandFullNameClean var(--brand-duration) linear 1 both}
 .brand-sec-name{opacity:0;animation:brandSecNameClean var(--brand-duration) linear 1 both}
 .brand-ext{color:var(--mintdeep)}
-@keyframes brandFullNameClean{0%,22%{opacity:1;transform:translateY(-50%)}26%,100%{opacity:0;transform:translateY(-50%) translateX(-7px)}}
-@keyframes brandSecNameClean{0%,31%{opacity:0;transform:translateY(-50%) translateX(8px)}36%,58%{opacity:1;transform:translateY(-50%) translateX(0)}62%,100%{opacity:0;transform:translateY(-50%) translateX(-6px)}}
+@keyframes brandFullNameClean{0%,20%{opacity:1;transform:translateY(-50%) scaleX(1);transform-origin:left center}30%,100%{opacity:0;transform:translateY(-50%) translateX(-5px) scaleX(.78);transform-origin:left center}}
+@keyframes brandSecNameClean{0%,29%{opacity:0;transform:translateY(-50%) translateX(8px)}36%,59%{opacity:1;transform:translateY(-50%) translateX(0)}64%,100%{opacity:0;transform:translateY(-50%) translateX(-5px)}}
 @keyframes brandGlowClean{0%,66%{opacity:0;transform:translate(-50%,-50%) scale(.25)}70%{opacity:.72;transform:translate(-50%,-50%) scale(7)}76%,100%{opacity:0;transform:translate(-50%,-50%) scale(11)}}
-@keyframes brandOpenShackleClean{0%,62%{opacity:1;transform:translateY(0)}66%,100%{opacity:0;transform:translateY(1px) rotate(-5deg)}}
+@keyframes brandOpenShackleClean{0%,58%{opacity:1;transform:translateY(-1px) rotate(-13deg);transform-origin:85% 100%}64%,100%{opacity:0;transform:translateY(1px) rotate(-18deg);transform-origin:85% 100%}}
 @keyframes brandLockBodyClean{0%,66%{opacity:1;transform:scale(1)}70%,100%{opacity:0;transform:scale(.9)}}
 @keyframes brandShieldClean{0%,70%{opacity:1;transform:scale(1)}76%,100%{opacity:0;transform:scale(.88)}}
 @keyframes brandMarkBackgroundClean{0%,70%{background:var(--mint);border-radius:10px}76%{background:rgba(184,255,221,.08)}80%,100%{background:transparent;border-radius:0}}
 @keyframes brandTextStageClean{0%,62%{width:126px;opacity:1}68%{width:126px;opacity:0}76%,100%{width:0;opacity:0}}
-@keyframes brandFinalLockClean{0%,82%{opacity:0;transform:scale(.82)}88%{opacity:1;transform:scale(1.06)}92%,100%{opacity:1;transform:scale(1)}}
+@keyframes brandFinalLockClean{0%,79%{opacity:0;transform:scale(.78)}86%{opacity:1;transform:scale(1.1)}91%,100%{opacity:1;transform:scale(1)}}
 .brand-header.is-brand-final .brand-mark{background:transparent!important;border-radius:0!important;box-shadow:none!important;overflow:visible}
 .brand-header.is-brand-final .brand-logo-svg{width:30px;height:30px}
 .brand-header.is-brand-final .brand-shield,.brand-header.is-brand-final .brand-open-shackle,.brand-header.is-brand-final .brand-closed-shackle,.brand-header.is-brand-final .brand-lock-body{display:none!important}
@@ -280,3 +280,11 @@ h1 span { color:var(--mint); }
 .brand-header.is-brand-final .brand-final-lock-glyph{opacity:1!important;transform:scale(1)!important;color:var(--mint)!important}
 @media(prefers-reduced-motion:reduce){.brand-header .brand-mark{background:transparent;border-radius:0;animation:none!important}.brand-header .brand-text-stage{display:none!important;animation:none!important}.brand-header .brand-shield,.brand-header .brand-lock-body,.brand-header .brand-open-shackle,.brand-header .brand-closed-shackle,.brand-header .brand-square-lock-glyph{display:none!important;animation:none!important}.brand-header .brand-final-lock-glyph{opacity:1;transform:scale(1);animation:none!important}.brand-header .brand-glow{display:none!important;animation:none!important}}
 
+
+/* 2026-10-29: 첫 장면은 열린 자물쇠, 종료 장면은 잠긴 자물쇠 단독 표시. */
+.brand-header:not(.is-brand-final) .brand-open-shackle{stroke-linejoin:round}
+.brand-header.is-brand-final{gap:0!important;width:34px!important;min-width:34px!important}
+.brand-header.is-brand-final .brand-mark{width:34px!important;height:34px!important;flex-basis:34px!important}
+.brand-header.is-brand-final .brand-logo-svg{display:block!important;width:30px!important;height:30px!important}
+.brand-header.is-brand-final .brand-final-lock-glyph{display:block!important;opacity:1!important;visibility:visible!important}
+.brand-header.is-brand-final .sr-only{position:absolute!important}

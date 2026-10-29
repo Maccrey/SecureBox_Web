@@ -87,10 +87,15 @@
   // 브랜드 애니메이션은 마지막에 '닫힌 자물쇠 하나'로 명시적으로 고정한다.
   // CSS animation-fill-mode만 의존하지 않아 브라우저별 마지막 프레임 차이를 피한다.
   const brandHeaders = document.querySelectorAll('.brand-header');
+  const reduceBrandMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   brandHeaders.forEach((brand) => {
     const finalGlyph = brand.querySelector('.brand-final-lock-glyph');
     if (!finalGlyph) return;
     const finishBrand = () => brand.classList.add('is-brand-final');
+    if (reduceBrandMotion) {
+      finishBrand();
+      return;
+    }
     finalGlyph.addEventListener('animationend', (event) => {
       if (event.animationName === 'brandFinalLockClean') finishBrand();
     }, { once: true });
