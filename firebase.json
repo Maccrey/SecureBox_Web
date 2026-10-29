@@ -13,6 +13,15 @@
     "trailingSlash": false,
     "headers": [
       {
+        "source": "**/favicon.@(svg|ico)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, no-cache, must-revalidate"
+          }
+        ]
+      },
+      {
         "source": "**",
         "headers": [
           {

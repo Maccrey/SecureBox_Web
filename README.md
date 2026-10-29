@@ -123,3 +123,9 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 단일 HTML 미리보기의 인라인 SVG 파비콘도 동일하게 투명화한다.
 - 재발 방지: `python -m unittest discover -s tests -p "test_*.py" -v` 및 `tests/test_favicon_transparency.py` 테스트.
 - 브라우저 파비콘은 캐시될 수 있으므로 배포 후 강력 새로고침 또는 시크릿 창에서 확인한다. GitHub 병합만으로 Hosting 배포가 완료되는 것은 아니다.
+
+## 복호화 감사 이력·파비콘 캐시 개선 (2026-10-29)
+
+- 고객용 기능 소개: Team/Business 관리형 복호화 요청·승인·완료·실패 이력은 PC·모바일에서 권한 범위 내 조회하도록 개발 예정. 무료 Personal 오프라인 복호화는 서버 로그 비대상. 실제 구현 전임을 명시.
+- 파비콘: ICO 폴백을 SVG 앞에 놓고 `?v=20261029-audit1` 캐시 키를 부여. Hosting favicon 응답에 `no-cache`로 갱신 확인. GitHub 병합만으로 배포된 도메인 아이콘 교체를 보장하지 않으며, 사이트 배포·HTML 캐시·호스팅 루트 경로를 별도 확인할 것.
+- TDD: `python -m unittest discover -s tests -p 'test_*.py' -v` 및 `node --check script.js`.
