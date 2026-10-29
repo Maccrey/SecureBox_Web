@@ -129,3 +129,10 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 고객용 기능 소개: Team/Business 관리형 복호화 요청·승인·완료·실패 이력은 PC·모바일에서 권한 범위 내 조회하도록 개발 예정. 무료 Personal 오프라인 복호화는 서버 로그 비대상. 실제 구현 전임을 명시.
 - 파비콘: ICO 폴백을 SVG 앞에 놓고 `?v=20261029-audit1` 캐시 키를 부여. Hosting favicon 응답에 `no-cache`로 갱신 확인. GitHub 병합만으로 배포된 도메인 아이콘 교체를 보장하지 않으며, 사이트 배포·HTML 캐시·호스팅 루트 경로를 별도 확인할 것.
 - TDD: `python -m unittest discover -s tests -p 'test_*.py' -v` 및 `node --check script.js`.
+
+## 활용 사례 10편 확장 (2026-10-29)
+
+- 기존 7편에 복호화 감사 이력 확인, 파일별 자물쇠·검색·일괄 비허용, 가입자 ID 암호문 전송·수신 알림 3편을 추가.
+- 고객 요청에 따라 `stories.html` 하단의 삽화 형식·분실 잠금 정책을 길게 설명하는 공통 안내 문단을 제거. 각 만화의 주의사항은 해당 카드 내부에 유지.
+- 기능은 아직 출시 예정이며 Android/iOS 백그라운드 알림 즉시 전달을 보장하지 않음. 설명·대사들은 `.comic-copy` 텍스트 컨테이너에 두고 이미지는 텍스트 없는 기존 삽화를 재활용.
+- 회귀 검사: `python -m unittest discover -s tests -p 'test_*.py'` 및 신규 `tests/test_latest_stories.py`.
