@@ -104,7 +104,8 @@ h1 span { color:var(--mint); }
 .brand-header.is-brand-final .brand-shield{opacity:0!important}
 .brand-header.is-brand-final .brand-open-shackle{opacity:0!important}
 .brand-header.is-brand-final .brand-closed-shackle{opacity:0!important}
-.brand-header.is-brand-final .brand-lock-body{opacity:0!important}\n.brand-header.is-brand-final .brand-square-lock-glyph{opacity:0!important}
+.brand-header.is-brand-final .brand-lock-body{opacity:0!important}
+.brand-header.is-brand-final .brand-square-lock-glyph{opacity:0!important}
 .brand-header.is-brand-final .brand-text-stage{width:0!important;opacity:0!important;transform:scaleX(0)!important;pointer-events:none}
 .brand-header.is-brand-final .brand-full-name,.brand-header.is-brand-final .brand-sec-name{opacity:0!important}
 .brand-header.is-brand-final .brand-glow{opacity:0!important;display:none!important}
