@@ -16,6 +16,7 @@ class AnimatedBrandContract(unittest.TestCase):
                 self.assertIn("brand-animated",head_logo)
                 self.assertIn("brand-open-shackle",head_logo)
                 self.assertIn("brand-closed-shackle",head_logo)
+                self.assertIn("brand-square-lock-glyph",head_logo)
                 self.assertIn("brand-full-name",head_logo)
                 self.assertIn("brand-sec-name",head_logo)
                 self.assertIn("SecBox",head_logo)
@@ -47,6 +48,11 @@ class AnimatedBrandContract(unittest.TestCase):
         self.assertIn("82%,100%{opacity:1;transform:scale(1)",css)
         self.assertIn("82%,100%{opacity:0",css)
         self.assertIn("brand-final-lock",css)
+        self.assertIn("brand-square-lock-glyph",css)
+        self.assertIn("@keyframesbrandSquareBlackLock",css)
+        self.assertIn("color:var(--navy)",css)
+        self.assertIn("72%,78%{opacity:1;transform:scale(1)",css)
+        self.assertIn("82%,100%{opacity:0;transform:scale(.9)",css)
 
     def test_footer_stays_static(self):
         for page in PAGES:
