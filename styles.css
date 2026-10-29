@@ -252,6 +252,10 @@ h1 span { color:var(--mint); }
 .brand-final-lock-glyph{animation:brandFinalLockGlyph 7.2s cubic-bezier(.18,.78,.22,1) 1 both;animation-fill-mode:forwards}
 .brand-glow{animation:brandGlow 7.2s ease-out 1 both;animation-fill-mode:forwards}
 .brand-final-lock{animation:brandFinalLockPulse 7.2s ease 1 both;animation-fill-mode:forwards}
+.brand-final-lock::before,.brand-final-lock::after{content:"";position:absolute;z-index:6;left:50%;opacity:0;pointer-events:none;box-sizing:border-box;animation:brandPersistentLock 7.2s cubic-bezier(.18,.78,.22,1) 1 both;animation-fill-mode:forwards}
+.brand-final-lock::before{top:53%;width:17px;height:13px;border:2.6px solid var(--mint);border-radius:3.5px;transform:translate(-50%,-50%) scale(.68);background:transparent;box-shadow:0 0 10px rgba(112,255,199,.18)}
+.brand-final-lock::after{top:25%;width:11px;height:10px;border:2.6px solid var(--mint);border-bottom:0;border-radius:8px 8px 0 0;transform:translateX(-50%) scale(.68);background:transparent}
+
 
 @keyframes brandMarkBackground{
   0%,72%{background:var(--mint);border-radius:10px}
@@ -302,6 +306,11 @@ h1 span { color:var(--mint); }
   80%{width:54px;opacity:.35;transform:scaleX(.7)}
   90%,100%{width:0;opacity:0;transform:scaleX(0)}
 }
+@keyframes brandPersistentLock{
+  0%,72%{opacity:0}
+  80%{opacity:.78}
+  88%,100%{opacity:1}
+}
 @keyframes brandFinalLockPulse{
   0%,58%{box-shadow:none;transform:scale(1)}
   67%{box-shadow:0 0 0 1px rgba(112,255,199,.18),0 0 22px 7px rgba(112,255,199,.30);transform:scale(1)}
@@ -318,4 +327,5 @@ h1 span { color:var(--mint); }
   .brand-header .brand-final-lock-glyph{opacity:1;transform:scale(1);animation:none!important}
   .brand-header .brand-glow{display:none;animation:none!important}
   .brand-header .brand-final-lock{animation:none!important}
+  .brand-header .brand-final-lock::before,.brand-header .brand-final-lock::after{opacity:1;animation:none!important}
 }

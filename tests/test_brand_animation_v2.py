@@ -15,6 +15,13 @@ class BrandAnimationV2(unittest.TestCase):
                     self.assertIn(term,head)
 
     def test_final_state_is_lock_only(self):
+        css=read("styles.css").replace(" ","").replace("\n","")
+        self.assertIn(".brand-final-lock::before",css)
+        self.assertIn(".brand-final-lock::after",css)
+        self.assertIn("@keyframesbrandPersistentLock",css)
+        block=css.split("@keyframesbrandPersistentLock",1)[1].split("}",2)
+        self.assertIn("100%{opacity:1", "".join(block))
+
         css=read("styles.css").replace(" ","")
         self.assertIn("@keyframesbrandMarkBackground",css)
         self.assertIn("90%,100%{background:transparent",css)
