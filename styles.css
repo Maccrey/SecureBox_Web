@@ -233,12 +233,12 @@ h1 span { color:var(--mint); }
 /* Animated SecureBox header brand: open -> SecBox.sec -> glow -> locked icon */
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .brand-header{position:relative;gap:10px;min-height:38px}
-.brand-animated{position:relative;flex:0 0 34px;overflow:visible;isolation:isolate}
+.brand-animated{position:relative;flex:0 0 34px;overflow:visible;isolation:isolate;animation:brandMarkBackground 7.2s ease 1 both;animation-fill-mode:forwards}
 .brand-logo-svg{position:relative;z-index:2;width:22px;height:22px}
 .brand-shield,.brand-open-shackle,.brand-closed-shackle,.brand-lock-body,.brand-final-lock-glyph{transform-box:fill-box;transform-origin:center}
 .brand-open-shackle{opacity:1}
 .brand-closed-shackle{opacity:0;transform:translateY(-2px)}
-.brand-final-lock-glyph{opacity:0;transform:scale(.55)}
+.brand-final-lock-glyph{opacity:0;transform:scale(.55);color:var(--mint)}
 .brand-glow{position:absolute;z-index:0;left:50%;top:50%;width:8px;height:8px;border-radius:999px;transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none;background:rgba(112,255,199,.85);box-shadow:0 0 10px 6px rgba(112,255,199,.42),0 0 28px 14px rgba(112,255,199,.20)}
 .brand-text-stage{position:relative;display:inline-block;width:126px;height:28px;overflow:visible;transform-origin:left center;animation:brandLockOnly 7.2s cubic-bezier(.2,.75,.2,1) 1 both;animation-fill-mode:forwards}
 .brand-text{position:absolute;left:0;top:50%;transform:translateY(-50%);font:inherit;letter-spacing:inherit;white-space:nowrap}
@@ -253,6 +253,11 @@ h1 span { color:var(--mint); }
 .brand-glow{animation:brandGlow 7.2s ease-out 1 both;animation-fill-mode:forwards}
 .brand-final-lock{animation:brandFinalLockPulse 7.2s ease 1 both;animation-fill-mode:forwards}
 
+@keyframes brandMarkBackground{
+  0%,72%{background:var(--mint);border-radius:10px}
+  82%{background:rgba(184,255,221,.14);border-radius:12px}
+  90%,100%{background:transparent;border-radius:0}
+}
 @keyframes brandFullName{
   0%,18%{opacity:1;transform:translateY(-50%) translateX(0);filter:blur(0)}
   28%,100%{opacity:0;transform:translateY(-50%) translateX(-10px);filter:blur(2px)}
@@ -304,6 +309,7 @@ h1 span { color:var(--mint); }
 }
 
 @media(prefers-reduced-motion:reduce){
+  .brand-header .brand-mark{background:transparent;border-radius:0;animation:none!important}
   .brand-header .brand-text-stage{width:0;opacity:0;transform:scaleX(0);animation:none!important}
   .brand-header .brand-shield{opacity:0;animation:none!important}
   .brand-header .brand-lock-body{opacity:0;animation:none!important}
