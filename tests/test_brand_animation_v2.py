@@ -16,11 +16,9 @@ class BrandAnimationV2(unittest.TestCase):
 
     def test_final_state_is_lock_only(self):
         css=read("styles.css").replace(" ","").replace("\n","")
-        self.assertIn(".brand-final-lock::before",css)
-        self.assertIn(".brand-final-lock::after",css)
-        self.assertIn("@keyframesbrandPersistentLock",css)
-        block=css.split("@keyframesbrandPersistentLock",1)[1].split("}",2)
-        self.assertIn("100%{opacity:1", "".join(block))
+        self.assertIn(".brand-header.is-brand-final.brand-final-lock-glyph{opacity:1",css)
+        self.assertIn(".brand-header.is-brand-final.brand-open-shackle{opacity:0",css)
+        self.assertIn(".brand-header.is-brand-final.brand-text-stage{width:0;opacity:0",css)
 
         css=read("styles.css").replace(" ","")
         self.assertIn("@keyframesbrandMarkBackground",css)
