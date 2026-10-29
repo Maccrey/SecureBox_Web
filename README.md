@@ -158,3 +158,14 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 사실/홍보 분리: SecureBox가 사고 당시 사용되었거나 위 사고를 막았다고 주장하지 않는다. 암호화는 계정 침해·피싱·사칭 송금·USB 도난 자체를 막지 못하며, 키를 함께 노출하거나 이미 복호화된 파일은 보호하지 못한다.
 - 신규 실패 테스트: `tests/test_verified_incidents.py`; 검증: `python -m unittest discover -s tests -p 'test_*.py' -v`, `node --check script.js`, 브라우저 390/768/1440px 링크·레이아웃 검사.
 - 고객용 웹은 앱 출시 전 기획 소개이며 구매/다운로드 가능 상태라고 광고하지 않는다. 인용 출처의 링크와 정확한 수치는 배포 전 재검토한다.
+
+## 헤더 로고 애니메이션 (2026-10-29)
+
+- 첫 프레임: 민트 아이콘 안의 **열린 자물쇠 + SecureBox.**
+- 전환: 전체 이름이 짧아지며 **SecBox.sec**가 페이드인되고, .sec 확장자를 민트색으로 강조한다.
+- 보안 전환: 아이콘 뒤 민트빛 glow가 켜지는 동안 열린 샤클이 사라지고 닫힌 샤클이 내려온다.
+- 마지막 프레임: 텍스트와 방패 선은 사라지고 **민트 아이콘 안의 닫힌 자물쇠만** 남는다.
+- CSS-only 7.2초 1회 애니메이션이며 별도 GIF/영상 다운로드가 없다. 페이지가 새로 로드될 때 다시 시작한다.
+- `prefers-reduced-motion: reduce`에서는 움직임 없이 최종 잠긴 자물쇠 상태를 표시한다.
+- 헤더에만 애니메이션을 적용하고 푸터의 SecureBox 표기는 정적으로 유지해 브랜드 식별성과 접근성을 보존한다.
+- 회귀 테스트: `python -m unittest tests.test_animated_brand -v` 또는 전체 `python -m unittest discover -s tests -p "test_*.py" -v`.
