@@ -23,7 +23,7 @@ class TransparentFaviconTest(unittest.TestCase):
         for i in range(count):
             w,h,_,_,_,_,length,offset = struct.unpack_from("<BBBBHHII",data,6+16*i)
             frame=data[offset:offset+length]
-            self.assertEqual(frame[:8], b"\\x89PNG\\r\\n\\x1a\\n")
+            self.assertEqual(frame[:8], bytes([137,80,78,71,13,10,26,10]))
             self.assertEqual(frame[25],6, "PNG must use RGBA")
     def test_svg_and_ico_referenced(self):
         for name in ("index.html","features.html","stories.html","pricing.html","security.html"):
