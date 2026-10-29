@@ -228,3 +228,74 @@ h1 span { color:var(--mint); }
 .incident-content-link a{color:#b1efca;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:950px){.incident-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:750px){.incident-hero{padding:62px 0}.incident-grid,.incident-figures,.incident-steps,.incident-home-layout{grid-template-columns:1fr}.incident-hero-lead{font-size:14px}}
+
+
+/* Animated SecureBox header brand: open -> SecBox.sec -> glow -> locked icon */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.brand-header{position:relative;gap:10px;min-height:38px}
+.brand-animated{position:relative;flex:0 0 34px;overflow:visible;isolation:isolate}
+.brand-logo-svg{position:relative;z-index:2;width:22px;height:22px}
+.brand-shield,.brand-open-shackle,.brand-closed-shackle,.brand-lock-body{transform-box:fill-box;transform-origin:center}
+.brand-open-shackle{opacity:1}
+.brand-closed-shackle{opacity:0;transform:translateY(-2px)}
+.brand-glow{position:absolute;z-index:0;left:50%;top:50%;width:8px;height:8px;border-radius:999px;transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none;background:rgba(112,255,199,.85);box-shadow:0 0 10px 6px rgba(112,255,199,.42),0 0 28px 14px rgba(112,255,199,.20)}
+.brand-text-stage{position:relative;display:inline-block;width:126px;height:28px;overflow:visible;transform-origin:left center;animation:brandLockOnly 7.2s cubic-bezier(.2,.75,.2,1) 1 both;animation-fill-mode:forwards}
+.brand-text{position:absolute;left:0;top:50%;transform:translateY(-50%);font:inherit;letter-spacing:inherit;white-space:nowrap}
+.brand-full-name{opacity:1;animation:brandFullName 7.2s ease 1 both;animation-fill-mode:forwards}
+.brand-sec-name{opacity:0;transform:translateY(-50%) translateX(5px);animation:brandSecName 7.2s ease 1 both;animation-fill-mode:forwards}
+.brand-ext{color:var(--mintdeep);text-shadow:0 0 0 rgba(112,255,199,0)}
+.brand-shield{animation:brandShield 7.2s ease 1 both;animation-fill-mode:forwards}
+.brand-open-shackle{animation:brandOpenShackle 7.2s ease 1 both;animation-fill-mode:forwards}
+.brand-closed-shackle{animation:brandClosedShackle 7.2s ease 1 both;animation-fill-mode:forwards}
+.brand-glow{animation:brandGlow 7.2s ease-out 1 both;animation-fill-mode:forwards}
+.brand-final-lock{animation:brandFinalLockPulse 7.2s ease 1 both;animation-fill-mode:forwards}
+
+@keyframes brandFullName{
+  0%,18%{opacity:1;transform:translateY(-50%) translateX(0);filter:blur(0)}
+  28%,100%{opacity:0;transform:translateY(-50%) translateX(-10px);filter:blur(2px)}
+}
+@keyframes brandSecName{
+  0%,21%{opacity:0;transform:translateY(-50%) translateX(12px);filter:blur(3px)}
+  34%,58%{opacity:1;transform:translateY(-50%) translateX(0);filter:blur(0)}
+  66%{opacity:1;transform:translateY(-50%) translateX(0);filter:blur(0);text-shadow:0 0 14px rgba(112,255,199,.65)}
+  78%,100%{opacity:0;transform:translateY(-50%) translateX(-8px) scale(.96);filter:blur(2px)}
+}
+@keyframes brandOpenShackle{
+  0%,56%{opacity:1;transform:translateY(0) rotate(0)}
+  65%{opacity:0;transform:translateY(1px) rotate(-5deg)}
+  100%{opacity:0}
+}
+@keyframes brandClosedShackle{
+  0%,55%{opacity:0;transform:translateY(-3px)}
+  66%{opacity:1;transform:translateY(0)}
+  100%{opacity:1;transform:translateY(0)}
+}
+@keyframes brandShield{
+  0%,69%{opacity:1;transform:scale(1)}
+  82%,100%{opacity:0;transform:scale(.82)}
+}
+@keyframes brandGlow{
+  0%,38%{opacity:0;transform:translate(-50%,-50%) scale(.2)}
+  53%{opacity:.85;transform:translate(-50%,-50%) scale(8)}
+  64%{opacity:.5;transform:translate(-50%,-50%) scale(12)}
+  78%,100%{opacity:0;transform:translate(-50%,-50%) scale(14)}
+}
+@keyframes brandLockOnly{
+  0%,67%{width:126px;opacity:1;transform:scaleX(1)}
+  80%{width:54px;opacity:.35;transform:scaleX(.7)}
+  90%,100%{width:0;opacity:0;transform:scaleX(0)}
+}
+@keyframes brandFinalLockPulse{
+  0%,58%{box-shadow:none;transform:scale(1)}
+  67%{box-shadow:0 0 0 1px rgba(112,255,199,.18),0 0 18px 5px rgba(112,255,199,.26);transform:scale(1.06)}
+  82%,100%{box-shadow:0 0 0 1px rgba(112,255,199,.12),0 0 9px 2px rgba(112,255,199,.14);transform:scale(1)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .brand-header .brand-text-stage{width:0;opacity:0;transform:scaleX(0);animation:none!important}
+  .brand-header .brand-shield{opacity:0;animation:none!important}
+  .brand-header .brand-open-shackle{opacity:0;animation:none!important}
+  .brand-header .brand-closed-shackle{opacity:1;transform:none;animation:none!important}
+  .brand-header .brand-glow{display:none;animation:none!important}
+  .brand-header .brand-final-lock{animation:none!important}
+}
