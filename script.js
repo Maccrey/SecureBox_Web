@@ -92,10 +92,14 @@
     if (!finalGlyph) return;
     const finishBrand = () => brand.classList.add('is-brand-final');
     finalGlyph.addEventListener('animationend', (event) => {
-      if (event.animationName === 'brandFinalLockGlyph') finishBrand();
+      if (event.animationName === 'brandFinalLockClean') finishBrand();
     }, { once: true });
     // animationend가 누락되는 환경에 대한 안전장치.
-    window.setTimeout(finishBrand, 7400);
+    const durationValue = getComputedStyle(brand).getPropertyValue('--brand-duration').trim();
+    const brandDurationMs = durationValue.endsWith('ms')
+      ? Number.parseFloat(durationValue)
+      : Number.parseFloat(durationValue || '6.8') * 1000;
+    window.setTimeout(finishBrand, brandDurationMs + 120);
   });
 
 })();

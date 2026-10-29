@@ -186,3 +186,10 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 종료: 사각형과 검은 자물쇠가 함께 페이드아웃되고 **민트색 닫힌 자물쇠 하나만** 페이드인해 유지된다.
 - `prefers-reduced-motion` 환경은 애니메이션 없이 최종 민트 자물쇠만 표시한다.
 - 회귀 테스트: `python -m unittest tests.test_animated_brand -v` 및 전체 정적 테스트.
+
+## 로고 애니메이션 상태 겹침 정리 (2026-10-29)
+
+- 단일 6.8초 타임라인: 열린 자물쇠 + SecureBox → 텍스트 완전 퇴장 → SecBox.sec → 텍스트 완전 퇴장 → 후광 → 최종 닫힌 자물쇠 하나.
+- 기존 중간 사각 자물쇠, CSS 가상요소 자물쇠, 별도 closed-shackle 애니메이션을 제거하여 같은 프레임에 여러 잠금 아이콘이 겹치지 않도록 함.
+- 최종 상태는 `.is-brand-final`에서 텍스트·방패·후광을 `display:none`으로 제거하고 SVG 닫힌 자물쇠만 유지. JS fallback 시간은 CSS `--brand-duration`에서 읽어 동기화.
+- 정적 회귀 계약: `tests/test_clean_logo_timeline.py`. 실제 브라우저 시각/E2E 검증은 GitHub Pages 배포 후 추가 확인 필요.
