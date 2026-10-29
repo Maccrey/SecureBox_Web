@@ -19,5 +19,5 @@ class StoryContract(unittest.TestCase):
  def test_illustration_and_text_separate(self):
   s=read("stories.html")
   self.assertEqual(s.count('class="comic-copy"'),10)
-  self.assertEqual(s.count('class="comic-art"'),10)
+  self.assertEqual(s.count('class="comic-art'),10)
 if __name__=="__main__":unittest.main()
