@@ -107,3 +107,11 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 원본 삭제는 검증·백업·사전 동의가 필요하고, PC 전용 키 + 관리자 온라인 승인 정책을 유지합니다.
 - 내부 설계: [docs/REMOTE_LOSS_ENCRYPTION_CONTRACT.md](docs/REMOTE_LOSS_ENCRYPTION_CONTRACT.md). 공개 웹페이지에는 Firebase·Polar 등 내부 기술명을 노출하지 않습니다.
 - TDD 재검증: `python -m unittest discover -s tests -p "test_*.py"` → HTML 구조·가격 계산·링크·모바일 브라우저 회귀 검사 → 한국어 커밋.
+
+## 문서 폴더 파비콘 (2026-10-29)
+
+- `favicon.svg`: 문서 폴더 + 보안 확인 표시를 담은 기본 벡터 파비콘.
+- `favicon.ico`: 호환 브라우저용 **16×16 / 32×32 PNG 프레임**을 포함한 ICO 폴백. SVG의 폴더·문서 구성을 작은 크기에 맞게 단순화했다.
+- `index.html`, `features.html`, `stories.html`, `pricing.html`, `security.html`의 `<head>`에서 SVG와 ICO를 함께 참조한다. `standalone-preview.html`은 오프라인 단일 HTML을 유지하기 위해 SVG 데이터 URI 아이콘을 사용한다.
+- TDD: `python -m unittest discover -s tests -p 'test_*.py' -v`. `tests/test_favicon.py`는 파일 헤더, PNG 프레임, 5개 HTML 참조, 독립 미리보기를 검사한다.
+- 배포: GitHub 반영은 사이트 공개 배포와 다르다. Hosting 배포 후 응답 코드·콘텐츠 유형 및 브라우저 캐시/탭 아이콘을 별도로 확인한다.
