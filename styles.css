@@ -228,3 +228,134 @@ h1 span { color:var(--mint); }
 .incident-content-link a{color:#b1efca;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:950px){.incident-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:750px){.incident-hero{padding:62px 0}.incident-grid,.incident-figures,.incident-steps,.incident-home-layout{grid-template-columns:1fr}.incident-hero-lead{font-size:14px}}
+
+
+/* SecureBox > SecBox.sec > locked icon. 6.2-second once-only branding sequence.
+   Header logo only; footer branding and accessible link label remain unchanged. */
+.site-header .brand-animated {
+  position:relative;
+  display:inline-flex;
+  width:34px;
+  min-width:34px;
+  height:34px;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  isolation:isolate;
+  overflow:visible;
+  text-decoration:none;
+}
+.site-header .brand-animated:focus-visible {
+  outline:2px solid var(--mint);
+  outline-offset:6px;
+}
+.site-header .brand-animated::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  left:-13px;
+  top:50%;
+  width:245px;
+  height:84px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(105,255,194,.48) 0%,rgba(105,255,194,.19) 36%,rgba(105,255,194,0) 74%);
+  filter:blur(10px);
+  transform:translateY(-50%) scale(.55);
+  opacity:0;
+  animation:secbox-light-beam 6.2s ease-in-out 1 both;
+  animation-fill-mode: forwards;
+}
+.site-header .brand-animated .logo-emblem {
+  position:relative;
+  display:grid;
+  flex:none;
+  place-items:center;
+  width:34px;
+  height:34px;
+  background:var(--mint);
+  color:var(--navy);
+  border-radius:10px;
+  z-index:2;
+  animation:secbox-icon-glow 6.2s ease-in-out 1 both;
+  animation-fill-mode: forwards;
+}
+.site-header .brand-animated .logo-shield {
+  width:22px;
+  height:22px;
+  overflow:visible;
+}
+.site-header .brand-animated .logo-lock-shackle {
+  transform-box:view-box;
+  transform-origin:17.5px 18px;
+  animation:secbox-lock-close 6.2s cubic-bezier(.34,.12,.28,1) 1 both;
+  animation-fill-mode: forwards;
+}
+.site-header .brand-animated .logo-wordstage {
+  position:absolute;
+  left:44px;
+  top:50%;
+  width:224px;
+  height:39px;
+  transform:translateY(-50%);
+  pointer-events:none;
+  white-space:nowrap;
+}
+.site-header .brand-animated .logo-original,
+.site-header .brand-animated .logo-secname {
+  position:absolute;
+  left:0;
+  top:50%;
+  display:block;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-.85px;
+  line-height:1.2;
+  color:#fff;
+  white-space:nowrap;
+}
+.site-header .brand-animated .logo-original {
+  animation:secbox-original-out 6.2s ease-in-out 1 both;
+  animation-fill-mode: forwards;
+}
+.site-header .brand-animated .logo-secname {
+  opacity:0;
+  animation:secbox-name-in-out 6.2s ease-in-out 1 both;
+  animation-fill-mode: forwards;
+}
+.site-header .brand-animated .logo-extension {
+  color:var(--mintdeep);
+  letter-spacing:-.2px;
+}
+@keyframes secbox-original-out {
+  0%,20% { opacity:1; filter:blur(0); transform:translateY(-50%) translateX(0) scale(1); }
+  30%,100% { opacity:0; filter:blur(2px); transform:translateY(-50%) translateX(-14px) scale(.88); }
+}
+@keyframes secbox-name-in-out {
+  0%,20% { opacity:0; filter:blur(4px); transform:translateY(-50%) translateX(21px) scale(.92); }
+  32%,58% { opacity:1; filter:blur(0); transform:translateY(-50%) translateX(0) scale(1); }
+  74%,100% { opacity:0; filter:blur(5px); transform:translateY(-50%) translateX(-10px) scale(.7); }
+}
+@keyframes secbox-light-beam {
+  0%,22% { opacity:0; transform:translateY(-50%) scale(.45); }
+  36% { opacity:.72; transform:translateY(-50%) scale(1.14); }
+  50% { opacity:1; transform:translateY(-50%) scale(1.38); }
+  71%,100% { opacity:0; transform:translateY(-50%) scale(.6); }
+}
+@keyframes secbox-icon-glow {
+  0%,30% { box-shadow:0 0 0 rgba(117,255,190,0); }
+  46% { box-shadow:0 0 22px 6px rgba(117,255,190,.45),0 0 42px 9px rgba(117,255,190,.17); }
+  67% { box-shadow:0 0 11px 3px rgba(117,255,190,.28); }
+  100% { box-shadow:0 0 0 rgba(117,255,190,0); }
+}
+@keyframes secbox-lock-close {
+  0%,57% { transform:rotate(-42deg); }
+  65%,100% { transform:rotate(0deg); }
+}
+/* Motion-sensitive visitors see the finished, closed lock immediately. */
+@media (prefers-reduced-motion: reduce) {
+  .site-header .brand-animated::before { display:none; animation:none !important; }
+  .site-header .brand-animated .logo-wordstage { display:none; }
+  .site-header .brand-animated .logo-emblem { animation:none !important; box-shadow:none; }
+  .site-header .brand-animated .logo-lock-shackle { animation:none !important; transform:rotate(0deg); }
+}
