@@ -55,7 +55,7 @@ Team/Business 앱 경유 USB·SNS·카카오톡 등 메신저 공유 자동 `.se
 ## 고객 중심 콘텐츠와 만화형 사용 시나리오
 
 - 기업 기능 카드에는 내부 서비스 제공자·결제사의 기술명을 쓰지 않고, **팀 보안 관리·승인 이력·접근 시간·기기 슬롯**을 설명한다.
-- 만화 7편(모두 가상 시나리오): `site/assets/stories/` 내부 WebP 7개와 각 카드의 상황·해결·효과·제약 표시. 분류 버튼은 전체/개인·학생/직장인·팀/사업가.
+- 만화 10편(모두 가상 시나리오): `site/assets/stories/` 내부 WebP 7개와 각 카드의 상황·해결·효과·제약 표시. 분류 버튼은 전체/개인·학생/직장인·팀/사업가.
 - 보안 범위: SecureBox 경유 암호문만 보호. 카카오톡 PC 직접 자동 첨부나 개인 PC의 모든 파일 공유/USB 복사 강제 차단을 주장하지 않는다.
 - 내부 기술 공급자명은 이 개발자 README·PRD·보안 문서에서만 다룬다. 정적 공개 `site/index.html`에는 포함하지 않는다.
 
@@ -85,7 +85,7 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 
 ## Business 모바일 폴더 사전 암호화 · 텍스트 없는 만화(개정)
 
-- 7편 만화 에피소드 이미지에는 글자를 넣지 않는다. 제목·대사·상황·주의사항은 접근 가능한 HTML `.comic-copy` 텍스트 컨테이너에 배치한다. 자산: `site/assets/stories/*.webp`, 자산 정책: `assets/stories/ARTWORK_NO_TEXT.md`.
+- 10편 만화 에피소드 이미지에는 글자를 넣지 않는다. 제목·대사·상황·주의사항은 접근 가능한 HTML `.comic-copy` 텍스트 컨테이너에 배치한다. 자산: `site/assets/stories/*.webp`, 자산 정책: `assets/stories/ARTWORK_NO_TEXT.md`.
 - EPISODE 06: 휴대폰 분실 전 지정 폴더 사전 암호화·분실 신고/온라인 접근 차단. EPISODE 07: PC 공개키로 보호 후 검증·백업·사용자 동의 시 논리적 원본 삭제 요청, 등록 PC에서만 해독.
 - 일반 스마트폰 OS 전체 잠금, 분실 후 강제 원격 암호화, 완전 소거, 클라우드 외부 사본 자동 삭제는 지원하지 않는다.
 - 검증: `python -m pytest -q tests/site/test_protected_folder_marketing.py`; `python scripts/build_standalone_preview.py && python scripts/verify_site_browser.py`.
@@ -93,11 +93,11 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 
 ## 페이지 구조 개편 (2026-10-28)
 
-**최종 결정: 짧은 홈 + 주제별 상세 페이지**. 고객의 핵심 질문에 즉시 답할 수 있도록 `index.html`의 제품 소개와 CTA를 간결하게 하고, 기능·만화 사례·요금제·보안 안내는 `features.html`, `stories.html`, `pricing.html`, `security.html`로 구분한다. 5개 URL은 정적 접근 가능한 `<a href>` 링크로 이동하며 JS 라우팅 의존이 없다.
+**최종 결정: 짧은 홈 + 주제별 상세 페이지**. 고객의 핵심 질문에 즉시 답할 수 있도록 `index.html`의 제품 소개와 CTA를 간결하게 하고, 기능·만화 사례·요금제·보안 안내는 `features.html`, `stories.html`, `pricing.html`, `security.html`로 구분한다. 6개 URL은 정적 접근 가능한 `<a href>` 링크로 이동하며 JS 라우팅 의존이 없다.
 
 - 공개 사이트에 내부 인프라/결제사명·운영 구조·개발자 디버깅 API는 노출하지 않는다. 출시 전 구매와 앱 다운로드는 연결하지 않는다.
 - 이미지 속 대사/문장 대신 `.comic-copy` HTML 텍스트로 접근 가능한 설명을 제공한다.
-- 홈→가격, 홈→사례, 사례→기능, 기능→가격의 구매 의사 결정 경로와 상세 5페이지 SEO/접근성, 가격 토글·모바일 메뉴가 회귀 테스트 대상.
+- 홈→가격, 홈→사례, 사례→기능, 기능→가격의 구매 의사 결정 경로와 상세 6페이지 SEO/접근성, 가격 토글·모바일 메뉴가 회귀 테스트 대상.
 - 업데이트 기능도 '서명 검증된 공식 배포 경로로 안전하게 갱신'하는 고객 혜택만 설명. 실제 업데이트 가능하다는 표현은 개발 상태와 함께 표시한다.
 
 ## Business 모바일 분실 후 원격 암호화 기획 (2026-10-29 변경)
@@ -132,7 +132,20 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 
 ## 활용 사례 10편 확장 (2026-10-29)
 
-- 기존 7편에 복호화 감사 이력 확인, 파일별 자물쇠·검색·일괄 비허용, 가입자 ID 암호문 전송·수신 알림 3편을 추가.
+- 기존 10편에 복호화 감사 이력 확인, 파일별 자물쇠·검색·일괄 비허용, 가입자 ID 암호문 전송·수신 알림 3편을 추가.
 - 고객 요청에 따라 `stories.html` 하단의 삽화 형식·분실 잠금 정책을 길게 설명하는 공통 안내 문단을 제거. 각 만화의 주의사항은 해당 카드 내부에 유지.
 - 기능은 아직 출시 예정이며 Android/iOS 백그라운드 알림 즉시 전달을 보장하지 않음. 설명·대사들은 `.comic-copy` 텍스트 컨테이너에 두고 이미지는 텍스트 없는 기존 삽화를 재활용.
 - 회귀 검사: `python -m unittest discover -s tests -p 'test_*.py'` 및 신규 `tests/test_latest_stories.py`.
+
+## SEC 파일 수신자 설치 안내 (2026-10-29)
+
+- 수신자 허브: `open-sec.html` (Windows/macOS/Android/iOS 설치 및 열기 안내). 사이트 주요 페이지의 상단·하단 내비게이션과 관련 FAQ/기능/메인에서 연결한다.
+- 설치 전에는 `.sec` 파일 클릭만으로 앱을 띄우거나 설치 페이지를 자동으로 열 수 없다. 따라서 발신자가 파일 공유 시 이 가이드의 **검증된 공식 HTTPS 주소**를 함께 제공한다. 도메인·앱 스토어 ID·실제 설치 URL은 출시 후 검증 완료 시 설정하며 가짜 다운로드 링크 금지.
+- 예시 파일명은 `SecureBox.md → SecureBox.sec`로 통일하고, 원래 확장자는 암호화된 SEC 메타데이터로 복구한다. 파일명 일부 노출·충돌 리스크를 유지한다.
+- 앱 설치 후 OS 파일 연결은 별도 Codex 개발 계획으로 처리하며, Windows/macOS 데스크톱 선출시·Android/iOS 후속 출시 정책을 따른다. 관리형 파일과 무료 오프라인 비밀번호 파일을 구분한다.
+- TDD: `python -m unittest discover -s tests -p "test_*.py" -v` + 링크/접근성/모바일 메뉴/파비콘/5+1페이지 검증.
+
+### 오프라인 미리보기 통합
+
+- `standalone-preview.html`은 6개 페이지(홈/기능/활용 사례/요금제/보안 안내/SEC 파일 열기)와 만화 10편을 포함한다. 반복 이미지 데이터는 중복 내장하지 않고 공유하여 미리보기 용량을 절감한다.
+- 발신 앱이 암호문 공유 시 붙일 설치 안내 링크는 **출시 후 검증된 HTTPS 공식 도메인**을 사용해야 한다. 실제 설치·스토어 링크가 없으므로 현재 웹에는 임의 다운로드 버튼을 추가하지 않는다.
