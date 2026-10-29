@@ -115,3 +115,11 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - `index.html`, `features.html`, `stories.html`, `pricing.html`, `security.html`의 `<head>`에서 SVG와 ICO를 함께 참조한다. `standalone-preview.html`은 오프라인 단일 HTML을 유지하기 위해 SVG 데이터 URI 아이콘을 사용한다.
 - TDD: `python -m unittest discover -s tests -p 'test_*.py' -v`. `tests/test_favicon.py`는 파일 헤더, PNG 프레임, 5개 HTML 참조, 독립 미리보기를 검사한다.
 - 배포: GitHub 반영은 사이트 공개 배포와 다르다. Hosting 배포 후 응답 코드·콘텐츠 유형 및 브라우저 캐시/탭 아이콘을 별도로 확인한다.
+
+### 투명 파비콘 배경 (2026-10-29)
+
+- 문서 폴더 아이콘의 전체 캔버스 남색 배경을 제거하고 SVG와 ICO 모두 **알파 투명 배경**으로 제공한다.
+- ICO는 16×16, 32×32, 48×48, 64×64 RGBA PNG 프레임을 포함한다. 공개 5개 페이지의 기존 SVG·ICO 참조는 유지한다.
+- 단일 HTML 미리보기의 인라인 SVG 파비콘도 동일하게 투명화한다.
+- 재발 방지: `python -m unittest discover -s tests -p "test_*.py" -v` 및 `tests/test_favicon_transparency.py` 테스트.
+- 브라우저 파비콘은 캐시될 수 있으므로 배포 후 강력 새로고침 또는 시크릿 창에서 확인한다. GitHub 병합만으로 Hosting 배포가 완료되는 것은 아니다.
