@@ -169,3 +169,12 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - `prefers-reduced-motion: reduce`에서는 움직임 없이 최종 잠긴 자물쇠 상태를 표시한다.
 - 헤더에만 애니메이션을 적용하고 푸터의 SecureBox 표기는 정적으로 유지해 브랜드 식별성과 접근성을 보존한다.
 - 회귀 테스트: `python -m unittest tests.test_animated_brand -v` 또는 전체 `python -m unittest discover -s tests -p "test_*.py" -v`.
+
+## 헤더 보안 로고 애니메이션 (2026-10-29)
+
+- 첫 장면: 민트 사각 아이콘 안의 열린 자물쇠 + `SecureBox.`
+- 중간 장면: `SecBox.sec`로 축약되며 `.sec` 확장자를 민트 컬러로 강조하고 뒤쪽 후광이 확산
+- 마지막 장면: 방패와 기존 작은 자물쇠가 사라지고 **닫힌 자물쇠가 점점 커져 민트 사각 아이콘 내부를 거의 채운 상태에서 정지**
+- 반복 재생하지 않고 1회 실행 후 최종 잠금 상태를 유지한다.
+- `prefers-reduced-motion: reduce` 환경에서는 애니메이션 없이 최종 닫힌 자물쇠 상태를 즉시 표시한다.
+- 회귀 테스트: `python -m unittest tests.test_animated_brand -v`.
