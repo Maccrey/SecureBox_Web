@@ -41,9 +41,11 @@ class AnimatedBrandContract(unittest.TestCase):
         self.assertIn("@keyframesbrandFinalLockPulse",css)
         self.assertIn("@keyframesbrandClosedShackle",css)
         self.assertIn("@keyframesbrandLockBody",css)
-        self.assertIn("transform:scale(1.6)",css)
+        self.assertIn("@keyframesbrandFinalLockGlyph",css)
+        self.assertIn(".brand-final-lock-glyph",css)
+        self.assertIn("transform:scale(.55)",css)
+        self.assertIn("82%,100%{opacity:1;transform:scale(1)",css)
         self.assertIn("82%,100%{opacity:0",css)
-        self.assertIn("82%,100%{opacity:1;transform:scale(1.6)",css)
         self.assertIn("brand-final-lock",css)
 
     def test_footer_stays_static(self):
