@@ -178,3 +178,11 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 반복 재생하지 않고 1회 실행 후 최종 잠금 상태를 유지한다.
 - `prefers-reduced-motion: reduce` 환경에서는 애니메이션 없이 최종 닫힌 자물쇠 상태를 즉시 표시한다.
 - 회귀 테스트: `python -m unittest tests.test_animated_brand -v`.
+
+## 로고 잠금 전환 보정 (2026-10-29)
+
+- 시작: 민트 사각형/방패 안의 열린 자물쇠와 `SecureBox.`.
+- 중간: `SecBox.sec` 전환과 후광 뒤, 민트 사각형 안에 **검은색 닫힌 자물쇠**가 페이드인한다.
+- 종료: 사각형과 검은 자물쇠가 함께 페이드아웃되고 **민트색 닫힌 자물쇠 하나만** 페이드인해 유지된다.
+- `prefers-reduced-motion` 환경은 애니메이션 없이 최종 민트 자물쇠만 표시한다.
+- 회귀 테스트: `python -m unittest tests.test_animated_brand -v` 및 전체 정적 테스트.

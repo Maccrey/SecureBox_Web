@@ -104,7 +104,7 @@ h1 span { color:var(--mint); }
 .brand-header.is-brand-final .brand-shield{opacity:0!important}
 .brand-header.is-brand-final .brand-open-shackle{opacity:0!important}
 .brand-header.is-brand-final .brand-closed-shackle{opacity:0!important}
-.brand-header.is-brand-final .brand-lock-body{opacity:0!important}
+.brand-header.is-brand-final .brand-lock-body{opacity:0!important}\n.brand-header.is-brand-final .brand-square-lock-glyph{opacity:0!important}
 .brand-header.is-brand-final .brand-text-stage{width:0!important;opacity:0!important;transform:scaleX(0)!important;pointer-events:none}
 .brand-header.is-brand-final .brand-full-name,.brand-header.is-brand-final .brand-sec-name{opacity:0!important}
 .brand-header.is-brand-final .brand-glow{opacity:0!important;display:none!important}
@@ -250,10 +250,10 @@ h1 span { color:var(--mint); }
 .brand-header{position:relative;gap:10px;min-height:38px}
 .brand-animated{position:relative;flex:0 0 34px;overflow:visible;isolation:isolate;animation:brandMarkBackground 7.2s ease 1 both;animation-fill-mode:forwards}
 .brand-logo-svg{position:relative;z-index:2;width:22px;height:22px}
-.brand-shield,.brand-open-shackle,.brand-closed-shackle,.brand-lock-body,.brand-final-lock-glyph{transform-box:fill-box;transform-origin:center}
+.brand-shield,.brand-open-shackle,.brand-closed-shackle,.brand-lock-body,.brand-square-lock-glyph,.brand-final-lock-glyph{transform-box:fill-box;transform-origin:center}
 .brand-open-shackle{opacity:1}
 .brand-closed-shackle{opacity:0;transform:translateY(-2px)}
-.brand-final-lock-glyph{opacity:0;transform:scale(.55);color:var(--mint)}
+.brand-square-lock-glyph{opacity:0;transform:scale(.62);color:var(--navy);animation:brandSquareBlackLock 7.2s cubic-bezier(.18,.78,.22,1) 1 both;animation-fill-mode:forwards}\n.brand-final-lock-glyph{opacity:0;transform:scale(.55);color:var(--mint)}
 .brand-glow{position:absolute;z-index:0;left:50%;top:50%;width:8px;height:8px;border-radius:999px;transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none;background:rgba(112,255,199,.85);box-shadow:0 0 10px 6px rgba(112,255,199,.42),0 0 28px 14px rgba(112,255,199,.20)}
 .brand-text-stage{position:relative;display:inline-block;width:126px;height:28px;overflow:visible;transform-origin:left center;animation:brandLockOnly 7.2s cubic-bezier(.2,.75,.2,1) 1 both;animation-fill-mode:forwards}
 .brand-text{position:absolute;left:0;top:50%;transform:translateY(-50%);font:inherit;letter-spacing:inherit;white-space:nowrap}
@@ -305,10 +305,16 @@ h1 span { color:var(--mint); }
   0%,68%{opacity:1;transform:scale(1)}
   82%,100%{opacity:0;transform:scale(.82)}
 }
+@keyframes brandSquareBlackLock{
+  0%,64%{opacity:0;transform:scale(.62)}
+  70%{opacity:.55;transform:scale(.82)}
+  72%,78%{opacity:1;transform:scale(1)}
+  82%,100%{opacity:0;transform:scale(.9)}
+}
 @keyframes brandFinalLockGlyph{
-  0%,62%{opacity:0;transform:scale(.55)}
-  70%{opacity:.68;transform:scale(.72)}
-  82%,100%{opacity:1;transform:scale(1)}
+  0%,78%{opacity:0;transform:scale(.72)}
+  84%{opacity:.55;transform:scale(.88)}
+  90%,100%{opacity:1;transform:scale(1)}
 }
 @keyframes brandGlow{
   0%,38%{opacity:0;transform:translate(-50%,-50%) scale(.2)}
@@ -339,7 +345,7 @@ h1 span { color:var(--mint); }
   .brand-header .brand-lock-body{opacity:0;animation:none!important}
   .brand-header .brand-open-shackle{opacity:0;animation:none!important}
   .brand-header .brand-closed-shackle{opacity:0;animation:none!important}
-  .brand-header .brand-final-lock-glyph{opacity:1;transform:scale(1);animation:none!important}
+  .brand-header .brand-square-lock-glyph{opacity:0;animation:none!important}\n  .brand-header .brand-final-lock-glyph{opacity:1;transform:scale(1);animation:none!important}
   .brand-header .brand-glow{display:none;animation:none!important}
   .brand-header .brand-final-lock{animation:none!important}
   .brand-header .brand-final-lock::before,.brand-header .brand-final-lock::after{opacity:1;animation:none!important}
