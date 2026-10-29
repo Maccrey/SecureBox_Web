@@ -359,3 +359,32 @@ h1 span { color:var(--mint); }
   .site-header .brand-animated .logo-emblem { animation:none !important; box-shadow:none; }
   .site-header .brand-animated .logo-lock-shackle { animation:none !important; transform:rotate(0deg); }
 }
+
+/* Dedicated static GitHub Pages preview for the animated wordmark. */
+.logo-demo-page { min-height:100vh; background:radial-gradient(ellipse at 50% 35%,#103442 0%,var(--navy) 64%); color:#fff; }
+.logo-demo-main { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:45px 20px; }
+.logo-demo-content { width:min(100%,750px); }
+.logo-demo-label { font-size:12px; font-weight:750; letter-spacing:.17em; color:var(--mint); }
+.logo-demo-content h1 { font-size:clamp(38px,5vw,66px); line-height:1.12; letter-spacing:-.04em; margin:19px 0; }
+.logo-demo-copy { max-width:610px; color:#bdcbd0; font-size:15px; line-height:1.85; }
+.logo-demo-frame {
+  display:flex;
+  align-items:center;
+  height:250px;
+  padding:0 clamp(24px,10vw,98px);
+  margin:30px 0 24px;
+  overflow:hidden;
+  border:1px solid rgba(177,248,217,.2);
+  border-radius:24px;
+  background:#061a28;
+  box-shadow:0 22px 60px rgba(0,0,0,.24);
+}
+.logo-demo-frame .brand-animated { transform:scale(2.05); transform-origin:left center; }
+.logo-demo-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.logo-demo-note { margin-top:18px; color:#9db4b9; font-size:12px; line-height:1.8; }
+@media(max-width:650px) {
+  .logo-demo-main { padding:30px 19px; }
+  .logo-demo-frame { height:185px; padding-inline:25px; border-radius:18px; }
+  .logo-demo-frame .brand-animated { transform:scale(1.38); }
+  .logo-demo-actions .btn { flex:1; min-width:130px; }
+}
