@@ -149,3 +149,12 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 
 - `standalone-preview.html`은 6개 페이지(홈/기능/활용 사례/요금제/보안 안내/SEC 파일 열기)와 만화 10편을 포함한다. 반복 이미지 데이터는 중복 내장하지 않고 공유하여 미리보기 용량을 절감한다.
 - 발신 앱이 암호문 공유 시 붙일 설치 안내 링크는 **출시 후 검증된 HTTPS 공식 도메인**을 사용해야 한다. 실제 설치·스토어 링크가 없으므로 현재 웹에는 임의 다운로드 버튼을 추가하지 않는다.
+
+## 공식 출처 기반 보안 사고 사례 (2026-10-29)
+
+- 신규 `incidents.html`: Microsoft의 2023년 Storm-0558 이메일 데이터 무단 접근(약 25개 조직), 영국 ICO 기록에 나온 North East Lincolnshire Council의 암호화되지 않은 USB 분실(아동 286명), Greater Manchester Police USB 도난(1,000명 이상)의 **실제 과거 사례**를 소개한다.
+- 출처: [Microsoft 공식 발표](https://blogs.microsoft.com/on-the-issues/2023/07/11/mitigation-china-based-threat-actor/) · [영국 ICO 암호화·저장소 공식 가이드](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/encryption/encryption-and-data-storage/).
+- 홈에는 핵심 수치와 CTA를 짧게 두고 상세 설명은 전용 페이지로 이동. 기능·활용 사례·상단 메뉴 및 푸터에 사고 사례 링크 추가.
+- 사실/홍보 분리: SecureBox가 사고 당시 사용되었거나 위 사고를 막았다고 주장하지 않는다. 암호화는 계정 침해·피싱·사칭 송금·USB 도난 자체를 막지 못하며, 키를 함께 노출하거나 이미 복호화된 파일은 보호하지 못한다.
+- 신규 실패 테스트: `tests/test_verified_incidents.py`; 검증: `python -m unittest discover -s tests -p 'test_*.py' -v`, `node --check script.js`, 브라우저 390/768/1440px 링크·레이아웃 검사.
+- 고객용 웹은 앱 출시 전 기획 소개이며 구매/다운로드 가능 상태라고 광고하지 않는다. 인용 출처의 링크와 정확한 수치는 배포 전 재검토한다.
