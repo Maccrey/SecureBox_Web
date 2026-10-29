@@ -136,3 +136,11 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 고객 요청에 따라 `stories.html` 하단의 삽화 형식·분실 잠금 정책을 길게 설명하는 공통 안내 문단을 제거. 각 만화의 주의사항은 해당 카드 내부에 유지.
 - 기능은 아직 출시 예정이며 Android/iOS 백그라운드 알림 즉시 전달을 보장하지 않음. 설명·대사들은 `.comic-copy` 텍스트 컨테이너에 두고 이미지는 텍스트 없는 기존 삽화를 재활용.
 - 회귀 검사: `python -m unittest discover -s tests -p 'test_*.py'` 및 신규 `tests/test_latest_stories.py`.
+
+## SEC 파일 수신자 설치 안내 (2026-10-29)
+
+- 수신자 허브: `open-sec.html` (Windows/macOS/Android/iOS 설치 및 열기 안내). 사이트 주요 페이지의 상단·하단 내비게이션과 관련 FAQ/기능/메인에서 연결한다.
+- 설치 전에는 `.sec` 파일 클릭만으로 앱을 띄우거나 설치 페이지를 자동으로 열 수 없다. 따라서 발신자가 파일 공유 시 이 가이드의 **검증된 공식 HTTPS 주소**를 함께 제공한다. 도메인·앱 스토어 ID·실제 설치 URL은 출시 후 검증 완료 시 설정하며 가짜 다운로드 링크 금지.
+- 예시 파일명은 `SecureBox.md → SecureBox.sec`로 통일하고, 원래 확장자는 암호화된 SEC 메타데이터로 복구한다. 파일명 일부 노출·충돌 리스크를 유지한다.
+- 앱 설치 후 OS 파일 연결은 별도 Codex 개발 계획으로 처리하며, Windows/macOS 데스크톱 선출시·Android/iOS 후속 출시 정책을 따른다. 관리형 파일과 무료 오프라인 비밀번호 파일을 구분한다.
+- TDD: `python -m unittest discover -s tests -p "test_*.py" -v` + 링크/접근성/모바일 메뉴/파비콘/5+1페이지 검증.
