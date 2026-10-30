@@ -13,8 +13,8 @@ class BrandAnimationV2(unittest.TestCase):
  def test_middle_secbox_and_glow(self):
   html=read("index.html").split("</header>",1)[0]
   css=read("styles.css")
-  self.assertIn('class="brand-sec-name"',html)
-  self.assertIn('class="brand-ext">.sec',html)
+  self.assertIn('class="brand-extension"',html)
+  self.assertIn('class="brand-extension">.sec',html)
   self.assertIn("@keyframes brandGlowClean",css)
  def test_final_only_lock_and_reduced_motion(self):
   css=read("styles.css").replace(" ","")
