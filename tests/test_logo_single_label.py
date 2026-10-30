@@ -9,20 +9,20 @@ class LogoSingleLabelContract(unittest.TestCase):
     def test_logo_has_exactly_one_of_each_stage_label(self):
         for path in PAGES:
             header=(ROOT/path).read_text(encoding="utf-8").split("</header>",1)[0]
-            self.assertEqual(header.count('class="brand-text brand-full-name"'),1,path)
-            self.assertEqual(header.count('class="brand-text brand-sec-name"'),1,path)
+            self.assertEqual(header.count('class="brand-text-stage brand-morph"'),1,path)
+            self.assertEqual(header.count('class="brand-extension"'),1,path)
     def test_frames_do_not_overlap(self):
         css=(ROOT/"styles.css").read_text(encoding="utf-8")
-        self.assertIn("@keyframes brandFullNameClean{0%,24%{opacity:1",css)
-        self.assertIn("27%,100%{opacity:0",css)
-        self.assertIn("@keyframes brandSecNameClean{0%,30%{opacity:0",css)
-        self.assertIn("34%,57%{opacity:1",css)
-        self.assertIn("60%,100%{opacity:0",css)
+        self.assertIn("@keyframes brandRemoveLetters{",css)
+        self.assertIn("35%,100%{max-width:0;opacity:0",css)
+        self.assertIn("@keyframes brandExtensionReveal{",css)
+        self.assertIn("50%,61%{max-width:3.2ch;opacity:1",css)
+        self.assertIn("71%,100%{max-width:3.2ch;opacity:1",css)
         self.assertIn("brandGlowClean",css)
         self.assertIn("brandFinalLockClean",css)
     def test_cache_key_on_every_page(self):
         for path in PAGES:
             content=(ROOT/path).read_text(encoding="utf-8")
-            self.assertIn("styles.css?v=20261030-logo3",content,path)
+            self.assertIn("styles.css?v=20261030-logo5",content,path)
 
 if __name__=="__main__": unittest.main()
