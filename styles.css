@@ -262,8 +262,8 @@ h1 span { color:var(--mint); }
 .brand-full-name{opacity:1;animation:brandFullNameClean var(--brand-duration) linear 1 both}
 .brand-sec-name{opacity:0;animation:brandSecNameClean var(--brand-duration) linear 1 both}
 .brand-ext{color:var(--mintdeep)}
-@keyframes brandFullNameClean{0%,20%{opacity:1;transform:translateY(-50%) scaleX(1);transform-origin:left center}30%,100%{opacity:0;transform:translateY(-50%) translateX(-5px) scaleX(.78);transform-origin:left center}}
-@keyframes brandSecNameClean{0%,29%{opacity:0;transform:translateY(-50%) translateX(8px)}36%,59%{opacity:1;transform:translateY(-50%) translateX(0)}64%,100%{opacity:0;transform:translateY(-50%) translateX(-5px)}}
+@keyframes brandFullNameClean{0%,24%{opacity:1;transform:translateY(-50%) scaleX(1);transform-origin:left center}27%,100%{opacity:0;transform:translateY(-50%) translateX(-5px) scaleX(.78);transform-origin:left center}}
+@keyframes brandSecNameClean{0%,30%{opacity:0;transform:translateY(-50%) translateX(8px)}34%,57%{opacity:1;transform:translateY(-50%) translateX(0)}60%,100%{opacity:0;transform:translateY(-50%) translateX(-5px)}}
 @keyframes brandGlowClean{0%,66%{opacity:0;transform:translate(-50%,-50%) scale(.25)}70%{opacity:.72;transform:translate(-50%,-50%) scale(7)}76%,100%{opacity:0;transform:translate(-50%,-50%) scale(11)}}
 @keyframes brandOpenShackleClean{0%,58%{opacity:1;transform:translateY(-1px) rotate(-13deg);transform-origin:85% 100%}64%,100%{opacity:0;transform:translateY(1px) rotate(-18deg);transform-origin:85% 100%}}
 @keyframes brandLockBodyClean{0%,66%{opacity:1;transform:scale(1)}70%,100%{opacity:0;transform:scale(.9)}}
