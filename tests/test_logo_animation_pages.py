@@ -4,7 +4,7 @@ import unittest
 
 ROOT=Path(__file__).resolve().parents[1]
 PAGES=("index.html","features.html","incidents.html","stories.html","pricing.html","security.html","open-sec.html")
-VERSION="20261030-logo3"
+VERSION="20261030-logo5"
 
 def read(path): return (ROOT/path).read_text(encoding="utf-8")
 
@@ -13,12 +13,12 @@ class LogoPagesContract(unittest.TestCase):
         html=read("index.html")
         css=read("styles.css")
         js=read("script.js")
-        for term in ("brand-open-shackle","brand-full-name","brand-sec-name","brand-ext","brand-glow","brand-final-lock-glyph"):
+        for term in ("brand-open-shackle","brand-morph","brand-removed","brand-extension","brand-glow","brand-final-lock-glyph"):
             self.assertIn(term,html+css)
         self.assertIn("SecureBox",html)
         self.assertIn("SecBox",html)
         self.assertIn(".sec",html)
-        for keyframe in ("brandOpenShackleClean","brandFullNameClean","brandSecNameClean","brandGlowClean","brandFinalLockClean"):
+        for keyframe in ("brandOpenShackleClean","brandRemoveLetters","brandExtensionReveal","brandGlowClean","brandFinalLockClean"):
             self.assertIn("@keyframes "+keyframe,css)
         self.assertIn("is-brand-final",js)
         self.assertIn(".brand-header.is-brand-final .brand-text-stage{display:none!important}",css)
