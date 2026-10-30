@@ -12,14 +12,14 @@ class BrandAnimationContract(unittest.TestCase):
    self.assertIn("brand-open-shackle",s,p)
    self.assertIn("brand-final-lock-glyph",s,p)
    self.assertIn("brand-full-name",s,p)
-   self.assertIn("brand-sec-name",s,p)
+   self.assertIn("brand-extension",s,p)
  def test_first_and_middle_copy(self):
   s=read("index.html")
-  self.assertIn(">SecureBox<span",s)
-  self.assertIn(">SecBox</span><span class=\"brand-ext\">.sec</span>",s)
+  self.assertIn("brand-kept\">Sec",s)
+  self.assertIn("brand-extension\">.sec</span>",s)
  def test_css_sequence_and_final_state(self):
   s=read("styles.css")
-  for term in ("brandOpenShackleClean","brandFullNameClean","brandSecNameClean","brandGlowClean","brandFinalLockClean",".brand-header.is-brand-final .brand-text-stage"):
+  for term in ("brandOpenShackleClean","brandRemoveLetters","brandExtensionReveal","brandGlowClean","brandFinalLockClean",".brand-header.is-brand-final .brand-text-stage"):
    self.assertIn(term,s)
   self.assertIn("display:none!important",s)
  def test_js_latches_final_lock(self):
