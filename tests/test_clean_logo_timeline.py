@@ -6,8 +6,8 @@ def read(p): return (ROOT/p).read_text(encoding="utf-8")
 class CleanBrandTimeline(unittest.TestCase):
     def test_single_timeline_contract(self):
         css=read("styles.css")
-        self.assertIn("--brand-duration:6.8s",css)
-        for name in ("brandFullNameClean","brandSecNameClean","brandOpenShackleClean","brandFinalLockClean","brandGlowClean"):
+        self.assertIn("--brand-duration:8.4s",css)
+        for name in ("brandRemoveLetters","brandExtensionReveal","brandOpenShackleClean","brandFinalLockClean","brandGlowClean"):
             self.assertIn("@keyframes "+name,css)
         self.assertNotIn("brandPersistentLock",css)
         self.assertNotIn("brandSquareBlackLock",css)
