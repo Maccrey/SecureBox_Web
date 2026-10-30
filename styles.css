@@ -246,7 +246,7 @@ h1 span { color:var(--mint); }
 
 
 /* Animated SecureBox header brand: one state exits before the next enters. */
-.brand-header{position:relative;gap:10px;min-height:38px;--brand-duration:6.8s}
+.brand-header{position:relative;gap:10px;min-height:38px;--brand-duration:8.4s}
 .brand-animated{position:relative;flex:0 0 34px;overflow:visible;isolation:isolate;background:var(--mint);border-radius:10px;animation:brandMarkBackgroundClean var(--brand-duration) linear 1 both}
 .brand-logo-svg{position:relative;z-index:2;width:22px;height:22px}
 .brand-shield,.brand-open-shackle,.brand-lock-body,.brand-final-lock-glyph{transform-box:fill-box;transform-origin:center}
@@ -291,3 +291,45 @@ h1 span { color:var(--mint); }
 
 /* 접근성용 브랜드 라벨은 시각적으로 숨겨 중복 표시를 방지한다. */
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+
+/* 단일 텍스트에서 SecureBox. → SecBox → SecBox.sec로 변형:
+   'ure'가 접히고, 기존 마침표가 사라진 후 .sec 확장자가 서서히 드러난다.
+   이후 후광과 텍스트 퇴장, 닫힌 자물쇠로 암호화 완료를 표현한다. */
+.brand-header .brand-text-stage.brand-morph{
+  display:inline-flex;align-items:center;white-space:nowrap;
+  width:160px;height:28px;overflow:hidden;
+  animation:brandMorphExit var(--brand-duration) linear both;
+}
+.brand-morph .brand-kept,.brand-morph .brand-box{flex:none}
+.brand-morph .brand-removed{
+  flex:none;display:inline-block;overflow:hidden;white-space:nowrap;
+  max-width:3.4ch;opacity:1;
+  animation:brandRemoveLetters var(--brand-duration) ease-in-out both;
+}
+.brand-morph .brand-original-dot{
+  display:inline-block;overflow:hidden;max-width:1ch;
+  animation:brandOriginalDotExit var(--brand-duration) linear both;
+}
+.brand-morph .brand-extension{
+  display:inline-block;overflow:hidden;white-space:nowrap;
+  max-width:0;opacity:0;color:var(--mintdeep);
+  animation:brandExtensionReveal var(--brand-duration) ease-in-out both;
+}
+@keyframes brandRemoveLetters{
+  0%,18%{max-width:3.4ch;opacity:1}
+  35%,100%{max-width:0;opacity:0}
+}
+@keyframes brandOriginalDotExit{
+  0%,18%{max-width:1ch;opacity:1}
+  32%,100%{max-width:0;opacity:0}
+}
+@keyframes brandExtensionReveal{
+  0%,36%{max-width:0;opacity:0}
+  50%,61%{max-width:3.2ch;opacity:1}
+  71%,100%{max-width:3.2ch;opacity:1}
+}
+@keyframes brandMorphExit{
+  0%,61%{width:160px;opacity:1;transform:translateX(0)}
+  75%{width:160px;opacity:0;transform:translateX(-6px)}
+  82%,100%{width:0;opacity:0;transform:translateX(-6px)}
+}
