@@ -1,46 +1,25 @@
-"""헤더 로고 애니메이션 v2 계약: 열린 자물쇠로 시작하고 잠긴 자물쇠만 남는다."""
+"""로고 v2 회귀: 열린 자물쇠→SecBox.sec→빛→잠긴 자물쇠."""
 from pathlib import Path
 import unittest
-
 ROOT=Path(__file__).resolve().parents[1]
-PAGES=("index.html","features.html","stories.html","pricing.html","security.html","open-sec.html","incidents.html")
 def read(p): return (ROOT/p).read_text(encoding="utf-8")
-
 class BrandAnimationV2(unittest.TestCase):
-    def test_all_public_headers_use_animation(self):
-        for page in PAGES:
-            with self.subTest(page=page):
-                head=read(page).split("</header>",1)[0]
-                for term in ("brand-header","brand-open-shackle","brand-final-lock-glyph","brand-full-name","brand-sec-name","SecBox",".sec"):
-                    self.assertIn(term,head)
-
-    def test_final_state_is_lock_only(self):
-        css=read("styles.css").replace(" ","").replace("\n","")
-        self.assertIn(".brand-header.is-brand-final.brand-final-lock-glyph{opacity:1",css)
-        self.assertIn(".brand-header.is-brand-final.brand-open-shackle{opacity:0",css)
-        self.assertIn(".brand-header.is-brand-final.brand-text-stage{width:0;opacity:0",css)
-
-        css=read("styles.css").replace(" ","")
-        self.assertIn("@keyframesbrandMarkBackground",css)
-        self.assertIn("90%,100%{background:transparent",css)
-        self.assertIn("@keyframesbrandShield",css)
-        self.assertIn("82%,100%{opacity:0",css)
-        self.assertIn("@keyframesbrandLockOnly",css)
-        self.assertIn("90%,100%{width:0;opacity:0",css)
-        self.assertIn("@keyframesbrandFinalLockGlyph",css)
-        self.assertIn("82%,100%{opacity:1;transform:scale(1)",css)
-        self.assertIn(".brand-final-lock-glyph{color:var(--mint)",css)
-
-    def test_initial_state_uses_open_lock(self):
-        css=read("styles.css").replace(" ","")
-        self.assertIn(".brand-open-shackle{opacity:1",css)
-        self.assertIn(".brand-closed-shackle{opacity:0",css)
-        self.assertIn("0%,56%{opacity:1",css)
-
-    def test_reduced_motion_finishes_on_lock_only(self):
-        css=read("styles.css").replace(" ","")
-        block=css.split("@media(prefers-reduced-motion:reduce)",1)[1]
-        self.assertIn(".brand-header.brand-mark{background:transparent",block)
-        self.assertIn(".brand-final-lock-glyph{opacity:1",block)
-
-if __name__=="__main__": unittest.main()
+ def test_initial_open_lock(self):
+  html=read("index.html").split("</header>",1)[0]
+  css=read("styles.css").replace(" ","")
+  self.assertIn("brand-open-shackle",html)
+  self.assertIn(".brand-open-shackle{opacity:1",css)
+  self.assertIn("rotate(-13deg)",css)
+ def test_middle_secbox_and_glow(self):
+  html=read("index.html").split("</header>",1)[0]
+  css=read("styles.css")
+  self.assertIn('class="brand-sec-name"',html)
+  self.assertIn('class="brand-ext">.sec',html)
+  self.assertIn("@keyframes brandGlowClean",css)
+ def test_final_only_lock_and_reduced_motion(self):
+  css=read("styles.css").replace(" ","")
+  self.assertIn(".brand-header.is-brand-final{gap:0!important;width:34px!important",css)
+  self.assertIn(".brand-header.is-brand-final.brand-text-stage{display:none!important}",css)
+  block=css.split("@media(prefers-reduced-motion:reduce)",1)[1]
+  self.assertIn(".brand-final-lock-glyph{opacity:1",block)
+if __name__=="__main__":unittest.main()

@@ -193,3 +193,11 @@ python scripts/build_standalone_preview.py && python scripts/verify_site_browser
 - 기존 중간 사각 자물쇠, CSS 가상요소 자물쇠, 별도 closed-shackle 애니메이션을 제거하여 같은 프레임에 여러 잠금 아이콘이 겹치지 않도록 함.
 - 최종 상태는 `.is-brand-final`에서 텍스트·방패·후광을 `display:none`으로 제거하고 SVG 닫힌 자물쇠만 유지. JS fallback 시간은 CSS `--brand-duration`에서 읽어 동기화.
 - 정적 회귀 계약: `tests/test_clean_logo_timeline.py`. 실제 브라우저 시각/E2E 검증은 GitHub Pages 배포 후 추가 확인 필요.
+
+## 헤더 로고 애니메이션 배포 (2026-10-30)
+
+- 시퀀스: 열린 자물쇠 + `SecureBox.` → `SecBox.sec` 페이드 → 민트빛 광원 → 잠긴 자물쇠 단독 유지.
+- 생성 이미지의 동작을 SVG/CSS keyframes로 재현해 여러 대형 PNG 프레임을 반복 다운로드하지 않는다.
+- `prefers-reduced-motion` 사용자는 애니메이션 대신 최종 잠금 아이콘만 본다.
+- GitHub Pages와 브라우저 캐시 갱신을 위해 공개 7개 페이지에서 `styles.css?v=20261030-logo2`, `script.js?v=20261030-logo2`를 사용한다.
+- 회귀 테스트: `tests/test_logo_animation_pages.py`, `tests/test_animated_brand.py`, `tests/test_brand_animation.py`, `tests/test_brand_animation_v2.py`, `tests/test_clean_logo_timeline.py`.
