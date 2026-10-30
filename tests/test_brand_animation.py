@@ -11,7 +11,7 @@ class BrandAnimationContract(unittest.TestCase):
    self.assertIn('class="brand brand-header"',s,p)
    self.assertIn("brand-open-shackle",s,p)
    self.assertIn("brand-final-lock-glyph",s,p)
-   self.assertIn("brand-full-name",s,p)
+   self.assertIn("brand-morph",s,p)
    self.assertIn("brand-extension",s,p)
  def test_first_and_middle_copy(self):
   s=read("index.html")
